@@ -51,6 +51,16 @@ angular.module('ngsocial.facebook', ['ngRoute', 'ngFacebook'])
             });
         }
         
+        $scope.postStatus = function() {
+            var myPostTextArea = this.myPostTextArea; // get data from ng-model=myPostTextArea
+            
+            $facebook.api("/me/feed", 'post', {message: myPostTextArea}).then(function(response){
+                $scope.msg = "Thanks for posting";
+                this.myPostTextArea = '';
+                refresh();
+            });
+        }
+        
         function refresh() {
             $facebook.api("/me").then(function(response){
                 $scope.welcomeMsg = "Welcome " + response.name;

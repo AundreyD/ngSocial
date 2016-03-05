@@ -35,13 +35,13 @@
     <div class="col-md-8">
     <h3>Welcome to Facebook</h3>
         <div ng-if="isLoggedIn == true">
-             <form>
+             <form ng-submit="postStatus()">
                   <div class="form-group">
                     <label>Status Update</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" ng-model="myPostTextArea"></textarea>
                   </div>
                   <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                 </form>
                     <br><br>
                     <div ng-repeat="post in posts" class="stbody" >
                         <div class="stimg"> 
